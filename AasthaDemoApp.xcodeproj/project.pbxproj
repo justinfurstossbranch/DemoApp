@@ -3,16 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8874A8B924224F9800F82341 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874A8B824224F9800F82341 /* AppDelegate.swift */; };
-		8874A8BB24224F9800F82341 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874A8BA24224F9800F82341 /* SceneDelegate.swift */; };
 		8874A8BD24224F9800F82341 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874A8BC24224F9800F82341 /* ViewController.swift */; };
-		8874A8C024224F9800F82341 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8874A8BE24224F9800F82341 /* Main.storyboard */; };
 		8874A8C224224F9C00F82341 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8874A8C124224F9C00F82341 /* Assets.xcassets */; };
 		8874A8C524224F9C00F82341 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8874A8C324224F9C00F82341 /* LaunchScreen.storyboard */; };
+		8874A8CD242251F600F82341 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874A8CC242251F600F82341 /* View.swift */; };
 		8BBF6EB37E98292279160012 /* Pods_AasthaDemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86C3B60249DAF52BDA8AD0A /* Pods_AasthaDemoApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,12 +19,11 @@
 		2BBED2320C871F235669C4C2 /* Pods-AasthaDemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AasthaDemoApp.debug.xcconfig"; path = "Target Support Files/Pods-AasthaDemoApp/Pods-AasthaDemoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		8874A8B524224F9800F82341 /* AasthaDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AasthaDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8874A8B824224F9800F82341 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8874A8BA24224F9800F82341 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8874A8BC24224F9800F82341 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8874A8BF24224F9800F82341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8874A8C124224F9C00F82341 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8874A8C424224F9C00F82341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8874A8C624224F9C00F82341 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8874A8CC242251F600F82341 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		D5BA26E1F6FFC6A58B5B3A37 /* Pods-AasthaDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AasthaDemoApp.release.xcconfig"; path = "Target Support Files/Pods-AasthaDemoApp/Pods-AasthaDemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		D86C3B60249DAF52BDA8AD0A /* Pods_AasthaDemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AasthaDemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -64,9 +62,8 @@
 			isa = PBXGroup;
 			children = (
 				8874A8B824224F9800F82341 /* AppDelegate.swift */,
-				8874A8BA24224F9800F82341 /* SceneDelegate.swift */,
 				8874A8BC24224F9800F82341 /* ViewController.swift */,
-				8874A8BE24224F9800F82341 /* Main.storyboard */,
+				8874A8CC242251F600F82341 /* View.swift */,
 				8874A8C124224F9C00F82341 /* Assets.xcassets */,
 				8874A8C324224F9C00F82341 /* LaunchScreen.storyboard */,
 				8874A8C624224F9C00F82341 /* Info.plist */,
@@ -88,7 +85,6 @@
 				2BBED2320C871F235669C4C2 /* Pods-AasthaDemoApp.debug.xcconfig */,
 				D5BA26E1F6FFC6A58B5B3A37 /* Pods-AasthaDemoApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -154,7 +150,6 @@
 			files = (
 				8874A8C524224F9C00F82341 /* LaunchScreen.storyboard in Resources */,
 				8874A8C224224F9C00F82341 /* Assets.xcassets in Resources */,
-				8874A8C024224F9800F82341 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,21 +204,13 @@
 			files = (
 				8874A8BD24224F9800F82341 /* ViewController.swift in Sources */,
 				8874A8B924224F9800F82341 /* AppDelegate.swift in Sources */,
-				8874A8BB24224F9800F82341 /* SceneDelegate.swift in Sources */,
+				8874A8CD242251F600F82341 /* View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8874A8BE24224F9800F82341 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8874A8BF24224F9800F82341 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8874A8C324224F9C00F82341 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
