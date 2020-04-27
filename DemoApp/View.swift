@@ -8,10 +8,25 @@
 
 import UIKit
 
+enum EventType: Int, CaseIterable {
+    case commerce = 0, content, lifecycle, custom
+    
+    var displayText: String {
+        switch self {
+        case EventType.commerce: return "Commerce Event"
+        case EventType.content: return "Content Event"
+        case EventType.lifecycle: return "Life Cycle Event"
+        case EventType.custom: return "Custom Event"
+        }
+    }
+}
+
+
 protocol ViewDelegate {
     func didTapShareButton(_ view: View, sender: UIButton)
     func didTapGenerateQuickLinkButton(_ view: View, sender: UIButton)
     func didTapViewLinkParametersButton(_ view: View, sender: UIButton)
+    func didTapEvent(_ view: View, sender: UIButton)
 }
 
 class View: UIView {
@@ -22,16 +37,17 @@ class View: UIView {
         }
     }
     //MARK: Init
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(parameters: NSDictionary?){
+        super.init(frame: CGRect())
         self.backgroundColor = .white
         setUpViewHierarchy()
         setUpViewConstraints()
+        //MARK: Map parameters to set labels/textView 
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     //MARK: View Hierarchy
     private func setUpViewHierarchy() {
         addSubview(titleLabel)
@@ -39,6 +55,10 @@ class View: UIView {
         addSubview(quickLinkLabel)
         addSubview(quickLinkButton)
         addSubview(shareButton)
+        addSubview(commerceEvent)
+        addSubview(contentEvent)
+        addSubview(lifecycleEvent)
+        addSubview(customEvent)
         addSubview(viewLinkParametersButton)
         addSubview(linkParametersTextView)
     }
@@ -73,11 +93,35 @@ class View: UIView {
             make.centerX.equalToSuperview()
             make.top.equalTo(quickLinkButton.snp.bottom).offset(20)
         }
-        viewLinkParametersButton.snp.makeConstraints { (make) in
+        commerceEvent.snp.makeConstraints { (make) in
             make.height.equalTo(45)
             make.width.equalToSuperview().multipliedBy(0.8)
             make.centerX.equalToSuperview()
             make.top.equalTo(shareButton.snp.bottom).offset(20)
+        }
+        contentEvent.snp.makeConstraints { (make) in
+            make.height.equalTo(45)
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(commerceEvent.snp.bottom).offset(20)
+        }
+        lifecycleEvent.snp.makeConstraints { (make) in
+            make.height.equalTo(45)
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(contentEvent.snp.bottom).offset(20)
+        }
+        customEvent.snp.makeConstraints { (make) in
+            make.height.equalTo(45)
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(lifecycleEvent.snp.bottom).offset(20)
+        }
+        viewLinkParametersButton.snp.makeConstraints { (make) in
+            make.height.equalTo(45)
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(customEvent.snp.bottom).offset(20)
         }
         linkParametersTextView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(8)
@@ -100,6 +144,9 @@ class View: UIView {
     @objc func didTapViewLinkParameters(_ sender: UIButton) {
         self.delegate?.didTapViewLinkParametersButton(self, sender: sender)
     }
+    @objc func didTapEvent(_ sender: UIButton) {
+        self.delegate?.didTapEvent(self, sender: sender)
+    }
     //MARK: Helpers
     internal func setCanonicalUrlLabel(withText text: String) {
         canonicalUrlLabel.text = text
@@ -114,7 +161,7 @@ class View: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 28.0, weight: .regular)
-        label.text = "Aastha's Demo App"
+        label.text = "Demo App"
         label.textColor = .black
         return label
     }()
@@ -148,6 +195,7 @@ class View: UIView {
         button.backgroundColor = UIColor(red: 55/255, green: 153/255, blue: 211/255, alpha: 1)
         button.addTarget(self, action: #selector(didTapGenerateQuickLink), for: .touchUpInside)
         button.layer.cornerRadius = 8.0
+        button.showsTouchWhenHighlighted = true
         return button
     }()
     internal lazy var shareButton: UIButton = {
@@ -156,6 +204,47 @@ class View: UIView {
         button.backgroundColor = UIColor(red: 55/255, green: 153/255, blue: 211/255, alpha: 1)
         button.addTarget(self, action: #selector(didTapShareButton), for: .touchUpInside)
         button.layer.cornerRadius = 8.0
+        button.showsTouchWhenHighlighted = true
+        return button
+    }()
+    internal lazy var commerceEvent: UIButton = {
+        let button = UIButton()
+        button.tag = EventType.commerce.rawValue
+        button.setAttributedTitle(NSAttributedString(string: EventType.commerce.displayText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18.0), NSAttributedString.Key.foregroundColor: UIColor.white]), for: .normal)
+        button.backgroundColor = UIColor(red: 55/255, green: 153/255, blue: 211/255, alpha: 1)
+        button.addTarget(self, action: #selector(didTapEvent), for: .touchUpInside)
+        button.layer.cornerRadius = 8.0
+        button.showsTouchWhenHighlighted = true
+        return button
+    }()
+    internal lazy var contentEvent: UIButton = {
+        let button = UIButton()
+        button.tag = EventType.content.rawValue
+        button.setAttributedTitle(NSAttributedString(string: EventType.content.displayText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18.0), NSAttributedString.Key.foregroundColor: UIColor.white]), for: .normal)
+        button.backgroundColor = UIColor(red: 55/255, green: 153/255, blue: 211/255, alpha: 1)
+        button.addTarget(self, action: #selector(didTapEvent), for: .touchUpInside)
+        button.layer.cornerRadius = 8.0
+        button.showsTouchWhenHighlighted = true
+        return button
+    }()
+    internal lazy var lifecycleEvent: UIButton = {
+        let button = UIButton()
+        button.tag = EventType.lifecycle.rawValue
+        button.setAttributedTitle(NSAttributedString(string: EventType.lifecycle.displayText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18.0), NSAttributedString.Key.foregroundColor: UIColor.white]), for: .normal)
+        button.backgroundColor = UIColor(red: 55/255, green: 153/255, blue: 211/255, alpha: 1)
+        button.addTarget(self, action: #selector(didTapEvent), for: .touchUpInside)
+        button.layer.cornerRadius = 8.0
+        button.showsTouchWhenHighlighted = true
+        return button
+    }()
+    internal lazy var customEvent: UIButton = {
+        let button = UIButton()
+        button.tag = EventType.custom.rawValue
+        button.setAttributedTitle(NSAttributedString(string: EventType.custom.displayText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18.0), NSAttributedString.Key.foregroundColor: UIColor.white]), for: .normal)
+        button.backgroundColor = UIColor(red: 55/255, green: 153/255, blue: 211/255, alpha: 1)
+        button.addTarget(self, action: #selector(didTapEvent), for: .touchUpInside)
+        button.layer.cornerRadius = 8.0
+        button.showsTouchWhenHighlighted = true
         return button
     }()
     internal lazy var viewLinkParametersButton: UIButton = {
@@ -164,6 +253,7 @@ class View: UIView {
         button.backgroundColor = UIColor(red: 55/255, green: 153/255, blue: 211/255, alpha: 1)
         button.addTarget(self, action: #selector(didTapViewLinkParameters), for: .touchUpInside)
         button.layer.cornerRadius = 8.0
+        button.showsTouchWhenHighlighted = true 
         return button
     }()
     internal lazy var linkParametersTextView: UITextView = {

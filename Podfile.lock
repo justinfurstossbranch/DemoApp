@@ -1,7 +1,7 @@
 PODS:
-  - Branch (0.32.0):
-    - Branch/Core (= 0.32.0)
-  - Branch/Core (0.32.0)
+  - Branch (0.33.1):
+    - Branch/Core (= 0.33.1)
+  - Branch/Core (0.33.1)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
@@ -14,9 +14,9 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
-  Branch: 770a23c04d3f5410cf9231db099a444dd3060784
+  Branch: 65d05ffb137ef504777cff6bd4fb6f770f17145a
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
 PODFILE CHECKSUM: c669949043ff2d90ee7efde1473c6a41adac5776
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1
