@@ -37,12 +37,11 @@ class View: UIView {
         }
     }
     //MARK: Init
-    init(parameters: NSDictionary?){
-        super.init(frame: CGRect())
+    override init(frame: CGRect){
+        super.init(frame: frame)
         self.backgroundColor = .white
         setUpViewHierarchy()
         setUpViewConstraints()
-        //MARK: Map parameters to set labels/textView 
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
