@@ -28,6 +28,16 @@
 				<string>demoapp</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Firebase </string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.630409952409-7pifcdva4jeien1j5eqj1084o8tsepir</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -65,6 +75,10 @@
 		<string>nhtqx-alternate.app.link</string>
 		<string>nhtqx.test-app.link</string>
 		<string>nhtqx-alternate.test-app.link</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
 	</array>
 </dict>
 </plist>

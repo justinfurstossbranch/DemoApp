@@ -12,7 +12,16 @@ import UIKit
 
 class ViewController: UIViewController {
     //MARK: Properties
-    var branchInitParameters: NSDictionary? = nil
+    var branchInitParameters: NSDictionary? = nil {
+        didSet {
+            // If $canonical_url is not available i just put the ~referring_link to show which Branch Link is driving you
+            if let canonicalURL = branchInitParameters?.value(forKey: "$canonical_url") as? String {
+                mainView.setCanonicalUrlLabel(withText: canonicalURL)
+            }  else if let referringLinkURL = branchInitParameters?.value(forKey: "~referring_link") as? String {
+                mainView.setCanonicalUrlLabel(withText: referringLinkURL)
+            }
+        }
+    }
     
     //MARK: View Life Cycle
     override func viewDidLoad() {
@@ -46,7 +55,7 @@ class ViewController: UIViewController {
     //MARK: Lazy Init
     internal lazy var mainView: View = {
         //MARK: Initialize view with Branch Paramaters
-        let view = View(parameters: branchInitParameters)
+        let view = View()
         view.delegate = self
         return view
     }()
@@ -63,6 +72,7 @@ extension ViewController: ViewDelegate {
     }
     func didTapViewLinkParametersButton(_ view: View, sender: UIButton) {
         //MARK: Pass the Params from the App Delegates Init session through the view.setLinkParameters
+        view.setLinkParameters(withText: branchInitParameters?.description ?? "No Branch Init Parameters")
     }
     func didTapEvent(_ view: View, sender: UIButton) {
         switch sender.tag {

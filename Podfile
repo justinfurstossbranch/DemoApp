@@ -7,6 +7,13 @@ target 'DemoApp' do
 
   # Pods for DemoApp
   pod 'SnapKit'
+
   pod 'Branch'
+
+  pod 'Firebase'
+  pod 'Firebase/Core'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Functions'
 
 end

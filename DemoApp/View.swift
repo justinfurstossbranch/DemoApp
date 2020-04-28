@@ -37,12 +37,11 @@ class View: UIView {
         }
     }
     //MARK: Init
-    init(parameters: NSDictionary?){
-        super.init(frame: CGRect())
+    override init(frame: CGRect){
+        super.init(frame: frame)
         self.backgroundColor = .white
         setUpViewHierarchy()
         setUpViewConstraints()
-        //MARK: Map parameters to set labels/textView 
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -165,29 +164,33 @@ class View: UIView {
         label.textColor = .black
         return label
     }()
-    internal lazy var canonicalUrlLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
-        label.text = "$canonical_url"
-        label.textColor = .gray
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.layer.borderColor = UIColor.gray.cgColor
-        label.layer.cornerRadius = 4.0
-        label.layer.borderWidth = 1.0
-        return label
+    internal lazy var canonicalUrlLabel: UITextView = {
+        let textView = UITextView()
+        textView.isSelectable = true
+        textView.isEditable = false
+        textView.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
+        textView.text = "$canonical_url"
+        textView.textColor = .gray
+        textView.textAlignment = .center
+        textView.layer.borderColor = UIColor.gray.cgColor
+        textView.layer.cornerRadius = 4.0
+        textView.layer.borderWidth = 1.0
+        textView.backgroundColor = .white
+        return textView
     }()
-    internal lazy var quickLinkLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
-        label.text = "Quick Link"
-        label.textColor = .gray
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.layer.borderColor = UIColor.gray.cgColor
-        label.layer.cornerRadius = 4.0
-        label.layer.borderWidth = 1.0
-        return label
+    internal lazy var quickLinkLabel: UITextView = {
+        let textView = UITextView()
+        textView.isSelectable = true
+        textView.isEditable = false
+        textView.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
+        textView.text = "Quick Link"
+        textView.textColor = .gray
+        textView.textAlignment = .center
+        textView.layer.borderColor = UIColor.gray.cgColor
+        textView.layer.cornerRadius = 4.0
+        textView.layer.borderWidth = 1.0
+        textView.backgroundColor = .white
+        return textView
     }()
     internal lazy var quickLinkButton: UIButton = {
         let button = UIButton()
@@ -259,11 +262,13 @@ class View: UIView {
     internal lazy var linkParametersTextView: UITextView = {
         let textView = UITextView()
         textView.text = "Link Parameters:"
-        textView.isSelectable = false
+        textView.textColor = .gray
+        textView.isSelectable = true
         textView.isEditable = false
         textView.layer.cornerRadius = 4.0
         textView.layer.borderWidth = 1.0
         textView.layer.borderColor = UIColor.gray.cgColor
+        textView.backgroundColor = .white
         return textView
     }()
 }
