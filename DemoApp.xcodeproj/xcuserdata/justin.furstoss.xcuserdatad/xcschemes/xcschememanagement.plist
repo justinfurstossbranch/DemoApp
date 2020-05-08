@@ -12,7 +12,12 @@
 		<key>DemoApp.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>22</integer>
+			<integer>28</integer>
+		</dict>
+		<key>SWRVEExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>29</integer>
 		</dict>
 	</dict>
 </dict>

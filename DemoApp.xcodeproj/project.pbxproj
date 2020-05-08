@@ -13,13 +13,45 @@
 		8874A8C224224F9C00F82341 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8874A8C124224F9C00F82341 /* Assets.xcassets */; };
 		8874A8C524224F9C00F82341 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8874A8C324224F9C00F82341 /* LaunchScreen.storyboard */; };
 		8874A8CD242251F600F82341 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874A8CC242251F600F82341 /* View.swift */; };
+		88D2B2922463245C0059450F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D2B2912463245C0059450F /* NotificationService.swift */; };
+		88D2B2962463245C0059450F /* SWRVEExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 88D2B28F2463245C0059450F /* SWRVEExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A82DBCF314121DE2F6CAA722 /* Pods_DemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DF6E686CBB212CA65610D4 /* Pods_DemoApp.framework */; };
+		DBECBA6247D4CB43F9027355 /* Pods_SWRVEExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB2A5AB278986D6BD59A61C /* Pods_SWRVEExtension.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		88D2B2942463245C0059450F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8874A8AD24224F9800F82341 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88D2B28E2463245C0059450F;
+			remoteInfo = SWRVEExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		88D2B2972463245C0059450F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				88D2B2962463245C0059450F /* SWRVEExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		062F3AB0187F947619CA495D /* Pods-SWRVEExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWRVEExtension.release.xcconfig"; path = "Target Support Files/Pods-SWRVEExtension/Pods-SWRVEExtension.release.xcconfig"; sourceTree = "<group>"; };
+		1DC58DF9AF22A835753AA01B /* Pods-DemoApp-SWRVEExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp-SWRVEExtension.debug.xcconfig"; path = "Target Support Files/Pods-DemoApp-SWRVEExtension/Pods-DemoApp-SWRVEExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		284262D389FE870F30E92E4F /* Pods-DemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp.release.xcconfig"; path = "Target Support Files/Pods-DemoApp/Pods-DemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		2BBED2320C871F235669C4C2 /* Pods-AasthaDemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AasthaDemoApp.debug.xcconfig"; path = "Target Support Files/Pods-AasthaDemoApp/Pods-AasthaDemoApp.debug.xcconfig"; sourceTree = "<group>"; };
+		38F67DC26FB8C304A63CFEE8 /* Pods-SWRVEExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWRVEExtension.debug.xcconfig"; path = "Target Support Files/Pods-SWRVEExtension/Pods-SWRVEExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		40B0991E6812A12D50DE3F08 /* Pods-DemoApp-SWRVEExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp-SWRVEExtension.release.xcconfig"; path = "Target Support Files/Pods-DemoApp-SWRVEExtension/Pods-DemoApp-SWRVEExtension.release.xcconfig"; sourceTree = "<group>"; };
 		49DF6E686CBB212CA65610D4 /* Pods_DemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AB2A5AB278986D6BD59A61C /* Pods_SWRVEExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWRVEExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F67AED3B1781B6EA272B949 /* Pods-DemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp.debug.xcconfig"; path = "Target Support Files/Pods-DemoApp/Pods-DemoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		88240D4E2433CE4000383336 /* Demo App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Demo App.entitlements"; sourceTree = "<group>"; };
 		88670CFA24584B3900081BF6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -30,6 +62,10 @@
 		8874A8C424224F9C00F82341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8874A8C624224F9C00F82341 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8874A8CC242251F600F82341 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		88D2B28F2463245C0059450F /* SWRVEExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SWRVEExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		88D2B2912463245C0059450F /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		88D2B2932463245C0059450F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88D2B29B246324C10059450F /* SWRVEExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SWRVEExtension.entitlements; sourceTree = "<group>"; };
 		D5BA26E1F6FFC6A58B5B3A37 /* Pods-AasthaDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AasthaDemoApp.release.xcconfig"; path = "Target Support Files/Pods-AasthaDemoApp/Pods-AasthaDemoApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,6 +78,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		88D2B28C2463245C0059450F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBECBA6247D4CB43F9027355 /* Pods_SWRVEExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -49,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				8874A8B724224F9800F82341 /* DemoApp */,
+				88D2B2902463245C0059450F /* SWRVEExtension */,
 				8874A8B624224F9800F82341 /* Products */,
 				CE6FAE3721D2405E83F569B5 /* Pods */,
 				B5575B0D08B109293EEA34D1 /* Frameworks */,
@@ -59,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				8874A8B524224F9800F82341 /* Demo App.app */,
+				88D2B28F2463245C0059450F /* SWRVEExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,10 +124,21 @@
 			path = DemoApp;
 			sourceTree = "<group>";
 		};
+		88D2B2902463245C0059450F /* SWRVEExtension */ = {
+			isa = PBXGroup;
+			children = (
+				88D2B29B246324C10059450F /* SWRVEExtension.entitlements */,
+				88D2B2912463245C0059450F /* NotificationService.swift */,
+				88D2B2932463245C0059450F /* Info.plist */,
+			);
+			path = SWRVEExtension;
+			sourceTree = "<group>";
+		};
 		B5575B0D08B109293EEA34D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				49DF6E686CBB212CA65610D4 /* Pods_DemoApp.framework */,
+				5AB2A5AB278986D6BD59A61C /* Pods_SWRVEExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -93,6 +150,10 @@
 				D5BA26E1F6FFC6A58B5B3A37 /* Pods-AasthaDemoApp.release.xcconfig */,
 				7F67AED3B1781B6EA272B949 /* Pods-DemoApp.debug.xcconfig */,
 				284262D389FE870F30E92E4F /* Pods-DemoApp.release.xcconfig */,
+				1DC58DF9AF22A835753AA01B /* Pods-DemoApp-SWRVEExtension.debug.xcconfig */,
+				40B0991E6812A12D50DE3F08 /* Pods-DemoApp-SWRVEExtension.release.xcconfig */,
+				38F67DC26FB8C304A63CFEE8 /* Pods-SWRVEExtension.debug.xcconfig */,
+				062F3AB0187F947619CA495D /* Pods-SWRVEExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -109,15 +170,35 @@
 				8874A8B224224F9800F82341 /* Frameworks */,
 				8874A8B324224F9800F82341 /* Resources */,
 				2FC8E8FD24E42BC73793F69B /* [CP] Embed Pods Frameworks */,
+				88D2B2972463245C0059450F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				88D2B2952463245C0059450F /* PBXTargetDependency */,
 			);
 			name = DemoApp;
 			productName = AasthaDemoApp;
 			productReference = 8874A8B524224F9800F82341 /* Demo App.app */;
 			productType = "com.apple.product-type.application";
+		};
+		88D2B28E2463245C0059450F /* SWRVEExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88D2B29A2463245C0059450F /* Build configuration list for PBXNativeTarget "SWRVEExtension" */;
+			buildPhases = (
+				1BFFCE117E3DFBFEA89E59FC /* [CP] Check Pods Manifest.lock */,
+				88D2B28B2463245C0059450F /* Sources */,
+				88D2B28C2463245C0059450F /* Frameworks */,
+				88D2B28D2463245C0059450F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SWRVEExtension;
+			productName = SWRVEExtension;
+			productReference = 88D2B28F2463245C0059450F /* SWRVEExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -125,12 +206,15 @@
 		8874A8AD24224F9800F82341 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Justin Furstoss";
 				TargetAttributes = {
 					8874A8B424224F9800F82341 = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					88D2B28E2463245C0059450F = {
+						CreatedOnToolsVersion = 11.4.1;
 					};
 				};
 			};
@@ -148,6 +232,7 @@
 			projectRoot = "";
 			targets = (
 				8874A8B424224F9800F82341 /* DemoApp */,
+				88D2B28E2463245C0059450F /* SWRVEExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -160,6 +245,13 @@
 				8874A8C524224F9C00F82341 /* LaunchScreen.storyboard in Resources */,
 				8874A8C224224F9C00F82341 /* Assets.xcassets in Resources */,
 				88670CFB24584B3900081BF6 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88D2B28D2463245C0059450F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +274,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-DemoApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1BFFCE117E3DFBFEA89E59FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SWRVEExtension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -218,7 +332,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		88D2B28B2463245C0059450F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88D2B2922463245C0059450F /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		88D2B2952463245C0059450F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 88D2B28E2463245C0059450F /* SWRVEExtension */;
+			targetProxy = 88D2B2942463245C0059450F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8874A8C324224F9C00F82341 /* LaunchScreen.storyboard */ = {
@@ -350,6 +480,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7F67AED3B1781B6EA272B949 /* Pods-DemoApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "DemoApp/Demo App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -371,6 +502,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 284262D389FE870F30E92E4F /* Pods-DemoApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "DemoApp/Demo App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -383,6 +515,54 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.branch.DemoApp;
 				PRODUCT_NAME = "Demo App";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		88D2B2982463245C0059450F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38F67DC26FB8C304A63CFEE8 /* Pods-SWRVEExtension.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CODE_SIGN_ENTITLEMENTS = SWRVEExtension/SWRVEExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R63EM248DP;
+				INFOPLIST_FILE = SWRVEExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.branch.DemoApp.SWRVEExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		88D2B2992463245C0059450F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 062F3AB0187F947619CA495D /* Pods-SWRVEExtension.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CODE_SIGN_ENTITLEMENTS = SWRVEExtension/SWRVEExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R63EM248DP;
+				INFOPLIST_FILE = SWRVEExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.branch.DemoApp.SWRVEExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -405,6 +585,15 @@
 			buildConfigurations = (
 				8874A8CA24224F9C00F82341 /* Debug */,
 				8874A8CB24224F9C00F82341 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88D2B29A2463245C0059450F /* Build configuration list for PBXNativeTarget "SWRVEExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88D2B2982463245C0059450F /* Debug */,
+				88D2B2992463245C0059450F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

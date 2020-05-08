@@ -5,10 +5,13 @@ target 'DemoApp' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
+
   # Pods for DemoApp
   pod 'SnapKit'
 
   pod 'Branch'
+
+  pod 'SwrveSDK'
 
   pod 'Firebase'
   pod 'Firebase/Core'
@@ -17,3 +20,10 @@ target 'DemoApp' do
   pod 'Firebase/Functions'
 
 end
+
+target 'SWRVEExtension' do
+  use_frameworks!
+  pod 'SwrveSDKCommon'
+  
+end
+

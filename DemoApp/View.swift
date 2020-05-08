@@ -50,8 +50,8 @@ class View: UIView {
     //MARK: View Hierarchy
     private func setUpViewHierarchy() {
         addSubview(titleLabel)
-        addSubview(canonicalUrlLabel)
-        addSubview(quickLinkLabel)
+        addSubview(canonicalUrlTextView)
+        addSubview(quickLinktextView)
         addSubview(quickLinkButton)
         addSubview(shareButton)
         addSubview(commerceEvent)
@@ -68,53 +68,53 @@ class View: UIView {
             make.top.equalToSuperview().offset(UIApplication.shared.statusBarFrame.height)
             make.height.equalTo(40)
         }
-        canonicalUrlLabel.snp.makeConstraints { (make) in
+        canonicalUrlTextView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(8)
             make.right.equalToSuperview().inset(8)
             make.top.equalTo(titleLabel.snp.bottom).offset(20)
             make.height.equalTo(30)
         }
-        quickLinkLabel.snp.makeConstraints { (make) in
+        quickLinktextView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(8)
             make.right.equalToSuperview().inset(8)
-            make.top.equalTo(canonicalUrlLabel.snp.bottom).offset(20)
+            make.top.equalTo(canonicalUrlTextView.snp.bottom).offset(20)
             make.height.equalTo(30)
         }
         quickLinkButton.snp.makeConstraints { (make) in
-            make.height.equalTo(45)
-            make.width.equalToSuperview().multipliedBy(0.8)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(quickLinkLabel.snp.bottom).offset(20)
+            make.height.equalTo(75)
+            make.width.equalTo(100)
+            make.centerX.equalToSuperview().multipliedBy(0.33)
+            make.top.equalTo(quickLinktextView.snp.bottom).offset(20)
         }
         shareButton.snp.makeConstraints { (make) in
-            make.height.equalTo(45)
-            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalTo(75)
+            make.width.equalTo(100)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(quickLinktextView.snp.bottom).offset(20)
+        }
+        commerceEvent.snp.makeConstraints { (make) in
+            make.height.equalTo(75)
+            make.width.equalTo(100)
+            make.centerX.equalToSuperview().multipliedBy(1.66)
+            make.top.equalTo(quickLinktextView.snp.bottom).offset(20)
+        }
+        contentEvent.snp.makeConstraints { (make) in
+            make.height.equalTo(75)
+            make.width.equalTo(100)
+            make.centerX.equalToSuperview().multipliedBy(0.33)
+            make.top.equalTo(quickLinkButton.snp.bottom).offset(20)
+        }
+        lifecycleEvent.snp.makeConstraints { (make) in
+            make.height.equalTo(75)
+            make.width.equalTo(100)
             make.centerX.equalToSuperview()
             make.top.equalTo(quickLinkButton.snp.bottom).offset(20)
         }
-        commerceEvent.snp.makeConstraints { (make) in
-            make.height.equalTo(45)
-            make.width.equalToSuperview().multipliedBy(0.8)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(shareButton.snp.bottom).offset(20)
-        }
-        contentEvent.snp.makeConstraints { (make) in
-            make.height.equalTo(45)
-            make.width.equalToSuperview().multipliedBy(0.8)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(commerceEvent.snp.bottom).offset(20)
-        }
-        lifecycleEvent.snp.makeConstraints { (make) in
-            make.height.equalTo(45)
-            make.width.equalToSuperview().multipliedBy(0.8)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(contentEvent.snp.bottom).offset(20)
-        }
         customEvent.snp.makeConstraints { (make) in
-            make.height.equalTo(45)
-            make.width.equalToSuperview().multipliedBy(0.8)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(lifecycleEvent.snp.bottom).offset(20)
+            make.height.equalTo(75)
+            make.width.equalTo(100)
+            make.centerX.equalToSuperview().multipliedBy(1.66)
+            make.top.equalTo(quickLinkButton.snp.bottom).offset(20)
         }
         viewLinkParametersButton.snp.makeConstraints { (make) in
             make.height.equalTo(45)
@@ -148,10 +148,10 @@ class View: UIView {
     }
     //MARK: Helpers
     internal func setCanonicalUrlLabel(withText text: String) {
-        canonicalUrlLabel.text = text
+        canonicalUrlTextView.text = text
     }
     internal func setQuickLinkLabel(withText text: String) {
-        quickLinkLabel.text = text
+        quickLinktextView.text = text
     }
     internal func setLinkParameters(withText text: String) {
         linkParametersTextView.text = text
@@ -164,31 +164,27 @@ class View: UIView {
         label.textColor = .black
         return label
     }()
-    internal lazy var canonicalUrlLabel: UITextView = {
+    internal lazy var canonicalUrlTextView: UITextView = {
         let textView = UITextView()
         textView.isSelectable = true
         textView.isEditable = false
+        textView.adjustsFontForContentSizeCategory = true
         textView.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
-        textView.text = "$canonical_url"
+        textView.text = "Relevant URL"
         textView.textColor = .gray
         textView.textAlignment = .center
-        textView.layer.borderColor = UIColor.gray.cgColor
-        textView.layer.cornerRadius = 4.0
-        textView.layer.borderWidth = 1.0
         textView.backgroundColor = .white
         return textView
     }()
-    internal lazy var quickLinkLabel: UITextView = {
+    internal lazy var quickLinktextView: UITextView = {
         let textView = UITextView()
         textView.isSelectable = true
         textView.isEditable = false
+        textView.adjustsFontForContentSizeCategory = true
         textView.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
         textView.text = "Quick Link"
         textView.textColor = .gray
         textView.textAlignment = .center
-        textView.layer.borderColor = UIColor.gray.cgColor
-        textView.layer.cornerRadius = 4.0
-        textView.layer.borderWidth = 1.0
         textView.backgroundColor = .white
         return textView
     }()
@@ -199,6 +195,8 @@ class View: UIView {
         button.addTarget(self, action: #selector(didTapGenerateQuickLink), for: .touchUpInside)
         button.layer.cornerRadius = 8.0
         button.showsTouchWhenHighlighted = true
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.textAlignment = .center
         return button
     }()
     internal lazy var shareButton: UIButton = {
@@ -208,6 +206,8 @@ class View: UIView {
         button.addTarget(self, action: #selector(didTapShareButton), for: .touchUpInside)
         button.layer.cornerRadius = 8.0
         button.showsTouchWhenHighlighted = true
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.textAlignment = .center
         return button
     }()
     internal lazy var commerceEvent: UIButton = {
@@ -218,6 +218,8 @@ class View: UIView {
         button.addTarget(self, action: #selector(didTapEvent), for: .touchUpInside)
         button.layer.cornerRadius = 8.0
         button.showsTouchWhenHighlighted = true
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.textAlignment = .center
         return button
     }()
     internal lazy var contentEvent: UIButton = {
@@ -228,6 +230,8 @@ class View: UIView {
         button.addTarget(self, action: #selector(didTapEvent), for: .touchUpInside)
         button.layer.cornerRadius = 8.0
         button.showsTouchWhenHighlighted = true
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.textAlignment = .center
         return button
     }()
     internal lazy var lifecycleEvent: UIButton = {
@@ -238,6 +242,8 @@ class View: UIView {
         button.addTarget(self, action: #selector(didTapEvent), for: .touchUpInside)
         button.layer.cornerRadius = 8.0
         button.showsTouchWhenHighlighted = true
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.textAlignment = .center
         return button
     }()
     internal lazy var customEvent: UIButton = {
@@ -248,11 +254,13 @@ class View: UIView {
         button.addTarget(self, action: #selector(didTapEvent), for: .touchUpInside)
         button.layer.cornerRadius = 8.0
         button.showsTouchWhenHighlighted = true
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.textAlignment = .center
         return button
     }()
     internal lazy var viewLinkParametersButton: UIButton = {
         let button = UIButton()
-        button.setAttributedTitle(NSAttributedString(string: "View Link Parameters", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18.0), NSAttributedString.Key.foregroundColor: UIColor.white]), for: .normal)
+        button.setAttributedTitle(NSAttributedString(string: "Get Latest Parameters", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18.0), NSAttributedString.Key.foregroundColor: UIColor.white]), for: .normal)
         button.backgroundColor = UIColor(red: 55/255, green: 153/255, blue: 211/255, alpha: 1)
         button.addTarget(self, action: #selector(didTapViewLinkParameters), for: .touchUpInside)
         button.layer.cornerRadius = 8.0
@@ -266,8 +274,6 @@ class View: UIView {
         textView.isSelectable = true
         textView.isEditable = false
         textView.layer.cornerRadius = 4.0
-        textView.layer.borderWidth = 1.0
-        textView.layer.borderColor = UIColor.gray.cgColor
         textView.backgroundColor = .white
         return textView
     }()

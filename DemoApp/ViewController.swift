@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var branchInitParameters: NSDictionary? = nil {
         didSet {
             // If $canonical_url is not available i just put the ~referring_link to show which Branch Link is driving you
+            mainView.setLinkParameters(withText: branchInitParameters?.description ?? "" )
             if let canonicalURL = branchInitParameters?.value(forKey: "$canonical_url") as? String {
                 mainView.setCanonicalUrlLabel(withText: canonicalURL)
             }  else if let referringLinkURL = branchInitParameters?.value(forKey: "~referring_link") as? String {
@@ -72,7 +73,7 @@ extension ViewController: ViewDelegate {
     }
     func didTapViewLinkParametersButton(_ view: View, sender: UIButton) {
         //MARK: Pass the Params from the App Delegates Init session through the view.setLinkParameters
-        view.setLinkParameters(withText: branchInitParameters?.description ?? "No Branch Init Parameters")
+        view.setLinkParameters(withText: Branch.getInstance().getLatestReferringParams()?.description ?? "No Latest Referring Parameters")
     }
     func didTapEvent(_ view: View, sender: UIButton) {
         switch sender.tag {
@@ -115,6 +116,7 @@ extension ViewController: ViewDelegate {
                 "Custom_Event_Property_Key2": "Custom_Event_Property_val2"
             ]
             event.logEvent() // Log the event.
+            view.setLinkParameters(withText: "Branch Universal Object: \n" + branchUniversalObject.dictionary().description + "Event Data: \n" + event.dictionary().description)
             print("Commerce Event Logged")
         case EventType.content.rawValue:
             let event = BranchEvent.standardEvent(.viewItem)
@@ -122,12 +124,14 @@ extension ViewController: ViewDelegate {
             event.eventDescription = "home_page"
             event.customData["Custom_Event_Property_Key1"] = "Custom_Event_Property_val1"
             event.logEvent()
+            view.setLinkParameters(withText: "Event Data: \n" + event.dictionary().description)
             print("Content Event Logged")
         case EventType.lifecycle.rawValue:
             let event = BranchEvent.standardEvent(.login)
             event.alias = "login"
             event.customData["content_type"] = "email_login"
             event.logEvent()
+            view.setLinkParameters(withText: "Event Data: \n" + event.dictionary().description)
             print("Life Cycle Event Logged")
         case EventType.custom.rawValue:
             let buo = BranchUniversalObject()
@@ -138,6 +142,7 @@ extension ViewController: ViewDelegate {
             event.contentItems = [buo]
             event.transactionID = UUID().uuidString
             event.logEvent()
+            view.setLinkParameters(withText: "Branch Universal Object: \n" + buo.dictionary().description + "Event Data: \n" + event.dictionary().description)
             print("Custom Event Logged")
         default:
             break

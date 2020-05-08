@@ -11,5 +11,9 @@
 		<string>applinks:nhtqx.test-app.link</string>
 		<string>applinks:nhtqx-alternate.test-app.link</string>
 	</array>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.io.branch.DemoApp</string>
+	</array>
 </dict>
 </plist>
