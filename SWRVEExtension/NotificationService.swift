@@ -18,8 +18,8 @@ class NotificationService: UNNotificationServiceExtension {
         self.contentHandler = contentHandler
         SwrvePush.handle(request.content, withAppGroupIdentifier: "group.io.branch.DemoApp") { (content) in
             self.bestAttemptContent = content
-            if let bestAttemptContent = self.bestAttemptContent {
-                contentHandler(bestAttemptContent)
+            if let bestAttemptContent = self.bestAttemptContent, let unwrappedContentHandler = self.contentHandler {
+                unwrappedContentHandler(bestAttemptContent)
             }
         }
     }

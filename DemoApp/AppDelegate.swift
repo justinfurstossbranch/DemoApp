@@ -19,13 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let rootViewController = ViewController()
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.becomeKey()
-        window?.rootViewController = rootViewController
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.becomeKey()
+        self.window?.rootViewController = rootViewController
         
         //MARK: Firebase
         FirebaseApp.configure()
-        Messaging.messaging().delegate = self
+//        Messaging.messaging().delegate = self
         
         //MARK:
         let config = SwrveConfig()
@@ -60,50 +60,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         return true
     }
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        Branch.getInstance().application(app, open: url, options: options)
-        return true
-    }
-    
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        Branch.getInstance().continue(userActivity)
-        return true
-    }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("Application Did Recieve")
-        print(userInfo)
-        Branch.getInstance().handlePushNotification(userInfo)
-        let handled = SwrveSDK.didReceiveRemoteNotification(userInfo, withBackgroundCompletionHandler: { fetchResult, swrvePayload in
-            print("SWRVE Payload")
-            print(swrvePayload)
-            // NOTE: Do not call the Swrve SDK from this context
-            // Your code here to process a Swrve remote push and payload
-            completionHandler(fetchResult)
-        })
-
-        if(!handled){
-            print("Not SWRVE")
-            // Your code here, it is either a non-background push received in the background or a non-Swrve remote push
-            // You’ll have to process the payload on your own and call the completionHandler as normal
-        }
-        completionHandler(UIBackgroundFetchResult.newData)
-    }
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        Branch.getInstance().handlePushNotification(userInfo)
-        let handled = SwrveSDK.didReceiveRemoteNotification(userInfo, withBackgroundCompletionHandler: { fetchResult, swrvePayload in
-            print("SWRVE Payload")
-            print(swrvePayload)
-            // NOTE: Do not call the Swrve SDK from this context
-            // Your code here to process a Swrve remote push and payload
-        })
-
-        if(!handled){
-            print("Not SWRVE")
-            // Your code here, it is either a non-background push received in the background or a non-Swrve remote push
-            // You’ll have to process the payload on your own and call the completionHandler as normal
-        }
-    }
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//        Branch.getInstance().application(app, open: url, options: options)
+//        return true
+//    }
+//
+//    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+//        Branch.getInstance().continue(userActivity)
+//        return true
+//    }
     
     //MARK: Push Notifications Allowance
     func registerForPushNotifications() {
@@ -127,16 +92,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Messaging.messaging().apnsToken = deviceToken
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print("Application Will Present")
-        completionHandler([.alert,.badge,.sound])
-    }
-    
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-//        print("Did Recieve")
-//        completionHandler()
-//    }
-    
 }
 
 //MARK: Firebase Messaging Delegate
@@ -145,7 +100,7 @@ extension AppDelegate: MessagingDelegate {
         print("FCM Token")
         print(fcmToken)
     }
-    
+
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
         print("FCM Message")
         print(remoteMessage.appData)
@@ -154,12 +109,39 @@ extension AppDelegate: MessagingDelegate {
 
 //MARK: SWRVE
 extension AppDelegate: SwrvePushResponseDelegate {
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("Application Did Recieve")
+        print(userInfo)
+        Branch.getInstance().handlePushNotification(userInfo)
+        let handled = SwrveSDK.didReceiveRemoteNotification(userInfo, withBackgroundCompletionHandler: { fetchResult, swrvePayload in
+            print("SWRVE Payload")
+            print(swrvePayload)
+            // NOTE: Do not call the Swrve SDK from this context
+            // Your code here to process a Swrve remote push and payload
+            completionHandler(fetchResult)
+        })
+        
+        if(!handled){
+            print("Not SWRVE")
+            // Your code here, it is either a non-background push received in the background or a non-Swrve remote push
+            // You’ll have to process the payload on your own and call the completionHandler as normal
+        }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("Application Will Present")
+        completionHandler([.alert,.badge,.sound])
+    }
+    
     func didReceive(_ response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("SWRVE Did Recieve")
+        print("SWRVE Did Recieve Response")
+        // Called when the push is interacted with. (pressed, button or dismiss)
         completionHandler()
     }
     
     func willPresent(_ notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // Called when a push is received when the app is in the foreground.
         print("SWRVE Will Present")
         completionHandler([])
     }
