@@ -86,6 +86,7 @@ extension ViewController: ViewDelegate {
             branchUniversalObject.title               = "My Item Title"
 
             branchUniversalObject.contentMetadata.contentSchema     = .commerceProduct
+            branchUniversalObject.contentMetadata.productName       = "Nike Airforce 1s"
             branchUniversalObject.contentMetadata.quantity          = 1
             branchUniversalObject.contentMetadata.price             = 23.20
             branchUniversalObject.contentMetadata.currency          = .USD
