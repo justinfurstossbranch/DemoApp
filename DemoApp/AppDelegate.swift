@@ -8,7 +8,7 @@
 //MARK: Import Branch
 import UIKit
 import SnapKit
-import Branch
+import mParticle_BranchMetrics
 import Firebase
 import SwrveSDK
 
@@ -35,19 +35,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         SwrveSDK.sharedInstance(withAppID: 31875, apiKey: "8v4vFLUGu5mbRHjVxZla", config: config)
 
 
-        // Add/Remove based on Live/Test Environment
-        Branch.setUseTestBranchKey(true)
-        let branch = Branch.getInstance()
-        // Add/Remove based on logging needs
-        branch.enableLogging()
+
         //MARK: Branch Init Session
         registerForPushNotifications()
-        branch.initSession(launchOptions: launchOptions) { (deepLinkingParams, error) in
-            print("Branch Parameters")
-            print(deepLinkingParams as? [String: AnyObject] ?? {})
-            branch.setIdentity("1234")
-            branch.setIdentity("1234email")
-            if let params = deepLinkingParams {
+        //initialize mParticle
+        let options = MParticleOptions(key: "fe8104a87f1fdf4d928f69c7d5dcb9bd",
+                                             secret: "x2JpLm6QXAxCMpjxRpiDHyb4-biuW7Ddl6cdwIKct1YYvNtjeSLyJRnXFDcxyPUN")
+        options.environment = .development
+        options.onAttributionComplete = {(results, error) in
+            if let params = results?.linkInfo {
+                print(params)
                 if let isWebOnly = params["$web_only"] as? Bool {
                     if isWebOnly {
                         // Kick User out to Safari
@@ -58,16 +55,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 }
             }
         }
+        MParticle.sharedInstance().start(with: options)
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        Branch.getInstance().application(app, open: url, options: options)
         return true
     }
 
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        Branch.getInstance().continue(userActivity)
         return true
     }
     
@@ -114,7 +110,6 @@ extension AppDelegate: SwrvePushResponseDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Application Did Recieve")
         print(userInfo)
-        Branch.getInstance().handlePushNotification(userInfo)
         let handled = SwrveSDK.didReceiveRemoteNotification(userInfo, withBackgroundCompletionHandler: { fetchResult, swrvePayload in
             print("SWRVE Payload")
             print(swrvePayload)
@@ -133,7 +128,7 @@ extension AppDelegate: SwrvePushResponseDelegate {
         // iOS 10+ overrides UIApplication.didRecieveRemoteNotification for custom button engagement
         print("UNUserNotification  Did Recieve")
         print(response.notification.request.content.userInfo)
-        Branch.getInstance().handlePushNotification(response.notification.request.content.userInfo)
+        MParticle.sharedInstance().userNotificationCenter(center, didReceive: response)
         let handled = SwrveSDK.didReceiveRemoteNotification(response.notification.request.content.userInfo, withBackgroundCompletionHandler: { fetchResult, swrvePayload in
             print("SWRVE Payload")
             print(swrvePayload)
@@ -141,12 +136,13 @@ extension AppDelegate: SwrvePushResponseDelegate {
             // Your code here to process a Swrve remote push and payload
             completionHandler()
         })
-        
+
         if(!handled){
             print("Not SWRVE")
             // Your code here, it is either a non-background push received in the background or a non-Swrve remote push
             // You’ll have to process the payload on your own and call the completionHandler as normal
         }
+        completionHandler()
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("Application Will Present")

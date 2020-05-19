@@ -8,4 +8,6 @@ ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/SwrveConversationSDK/SwrveConversationSDK.framework
 ${BUILT_PRODUCTS_DIR}/SwrveSDK/SwrveSDK.framework
 ${BUILT_PRODUCTS_DIR}/SwrveSDKCommon-iOS12.0/SwrveSDKCommon.framework
+${BUILT_PRODUCTS_DIR}/mParticle-Apple-SDK/mParticle_Apple_SDK.framework
+${BUILT_PRODUCTS_DIR}/mParticle-BranchMetrics/mParticle_BranchMetrics.framework
 ${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework

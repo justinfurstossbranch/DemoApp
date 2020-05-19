@@ -9,7 +9,7 @@ target 'DemoApp' do
   # Pods for DemoApp
   pod 'SnapKit'
 
-  pod 'Branch'
+  pod 'mParticle-BranchMetrics'
 
   pod 'SwrveSDK'
 

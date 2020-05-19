@@ -1,0 +1,6 @@
+framework module mParticle_BranchMetrics {
+  umbrella header "mParticle-BranchMetrics-umbrella.h"
+
+  export *
+  module * { export * }
+}
