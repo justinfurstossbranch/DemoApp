@@ -39,8 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //MARK: Branch Init Session
         registerForPushNotifications()
         //initialize mParticle
-        let options = MParticleOptions(key: "fe8104a87f1fdf4d928f69c7d5dcb9bd",
-                                             secret: "x2JpLm6QXAxCMpjxRpiDHyb4-biuW7Ddl6cdwIKct1YYvNtjeSLyJRnXFDcxyPUN")
+        let options = MParticleOptions(key: "ENTER YOUR mPArticle iOS INPUT KEY",
+                                             secret: "ENTER YOUR mPArticle iOS INPUT SECRET)
         options.environment = .development
         options.onAttributionComplete = {(results, error) in
             if let params = results?.linkInfo {
